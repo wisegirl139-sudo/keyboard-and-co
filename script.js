@@ -39,9 +39,9 @@ async function handtrack() { //well done if u noticed we're making it hand contr
     detectHands();
 }
 let pinching=false;
-let lastpinchdist=null;
-let zoomlevel=4;
+let pivots=[];
 let cameras=[];
+
 function detectHands(){
     if(video.readyState>=2){
         const results=handDetector.detectForVideo(
@@ -57,6 +57,9 @@ function detectHands(){
         //indexxx finger 
         if(results.landmarks.length>0){
             const hand= results.landmarks[0];
+            const pinkyt=hand[20];
+            const pinkyb=hand[17];
+            const pinkyup=pinkyt.y<pinkyb.y;//imagine me breaking into song
             const x=1-hand[8].x;
             const y=hand[8].y;
             const cursor=document.getElementById("curse");
@@ -87,6 +90,14 @@ function detectHands(){
             }
             if(distance>0.08){
                 pinching=false;
+            }
+            //pinkyy
+            if(pinkyup){
+                const rotation=(0.5-pinkyt.x)*0.15;
+                pivots.forEach(pivot=>{
+                    pivot.rotation.y+=rotation;
+                });
+
             }
         }else{
             stats.textContent="no hands detected";
@@ -136,6 +147,7 @@ models.forEach(model=>{
     const load=new OBJLoader();
     const pivot=new THREE.Group();
     sce.add(pivot);
+    pivots.push(pivot);
     load.load(model.file,obj=>{
         obj.traverse(part=>{
             if(part.isMesh){
