@@ -37,3 +37,18 @@ body{
 header{
     text-align: center;
 }
+.card h2{
+    font-size: 22px;
+}
+.card p{
+    font-size: 14px;
+    line-height: 1.5;
+}
+.card button{
+    background-color: #72383d;
+    color: #efe9e1;
+    font-family: inherit;
+    border: 1px double #ac9c8d;
+    padding: 10px 20px;
+
+}
