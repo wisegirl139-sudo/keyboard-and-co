@@ -237,5 +237,37 @@ models.forEach(model=>{
 let selfiles=[];
 function addtodown(card){
     const name=card.querySelector("h2").textContent;
-    const model=models.find(item=>item.id===card.querySelector(".cardimg").id)
+    const model=models.find(item=>item.id===card.querySelector(".cardimg").id);
+    if(!model) return;
+    if(selfiles.some(item=>item.id===model.id)) return;
+    selfiles.push({
+        id:model.id,
+        name:name,
+        file:model.file
+
+    });
+    updatedowns();
+}
+function updatedowns(){
+    const items=document.getElementById("cart");
+    const count=document.getElementById("cardcount");
+    items.innerHTML="";
+    count.textContent=selfiles.length;
+    if(selfiles.length===0){
+        items.textContent="nothing selected yet...";
+    }
+    selfiles.forEach(item=>{
+        const row=document.createElement("div");
+        row.className="cartitem";
+        const name=document.createElement("span");
+        name.textContent=item.name;
+        const remove=document.createElement("button");
+        remove.textContent="remove";
+        remove.addEventListener("click",()=>{
+            selfiles=selfiles.filter(file=>file.id !==item.id);
+            updatedowns();
+        });
+        row.append(name,remove);
+        items.appendChild(row);
+    });
 }
