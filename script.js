@@ -1,6 +1,7 @@
 import{FilesetResolver,HandLandmarker}from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.mjs";
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
 import { OBJLoader } from "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/OBJLoader.js";
+import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js";
 //miss me much, anyways gonna make it type it bc keyboard yk yk
 const text="Keyboard & Co";
 let i=0;
@@ -79,3 +80,13 @@ button.addEventListener("click",async()=>{
     }
 });
 //3d model timee
+const box=document.getElementById("main");
+const sce=new THREE.Scene();
+const lca=new THREE.PerspectiveCamera(45,1,0.1,100);
+const render= new THREE.WebGLRenderer({
+    alpha:true,
+    antialias:true
+});
+render.setPixelRatio(window.devicePixelRatio);
+render.setSize(box.clientWidth,box.clientHeight);
+box.appendChild(render.domElement);
