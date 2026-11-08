@@ -27,4 +27,13 @@ body{
     width: 250px;
     padding: 20px;
     border: 1px solid #ac9c8d;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+.card:hover{
+    transform: translateY(-5px);
+}
+header{
+    text-align: center;
 }
