@@ -39,6 +39,9 @@ async function handtrack() { //well done if u noticed we're making it hand contr
     detectHands();
 }
 let pinching=false;
+let lastpinchdist=null;
+let zoomlevel=4;
+let cameras=[];
 function detectHands(){
     if(video.readyState>=2){
         const results=handDetector.detectForVideo(
@@ -70,6 +73,13 @@ function detectHands(){
                 thumb.x -index.x,
                 thumb.y-index.y
             );
+            stats.textContent=`pinch distance:${distance.toFixed(3)}`;
+            console.log("pinch distance",distance);
+            if(lastpinchdist !==null){
+                const change=distance-lastpinchdist; //lastpinch dist sounds german icl
+                document.querySelectorAll(".cardimg canvas").forEach(canvas=>{});
+            }
+            lastpinchdist=distance;
             if(distance<0.05 && !pinching){
                 pinching=true;
                 const cursor=document.getElementById("curse");
@@ -110,6 +120,7 @@ models.forEach(model=>{
     if(!box) return;
     const sce=new THREE.Scene();
     const lca=new THREE.PerspectiveCamera(45,1,0.1,100);
+    cameras.push(lca);
     const render= new THREE.WebGLRenderer({
         alpha:true,
         antialias:true
