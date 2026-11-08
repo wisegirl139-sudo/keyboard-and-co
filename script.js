@@ -124,3 +124,10 @@ load.load("./models/main.obj",obj=>{
 },undefined, error=>{
     console.error("model failed",error);
 });
+
+//action time
+const controls=new OrbitControls(lca,render.domElement);
+controls.target.set(0,0,0);
+controls.enableDamping=true;
+controls.autoRotate=false;
+//now we rotate
