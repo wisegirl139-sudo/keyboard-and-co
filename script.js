@@ -117,18 +117,20 @@ function detectHands(){
             if(distance<0.05 && !pinching && !thumbsupactive){
                 pinching=true;
                 const cursor=document.getElementById("curse");
-                const element =document.elementFromPoint(parseFloat(cursor.style.left),parseFloat(cursor.style.top));
-                const target = element?.closest("button, a, .card");
-                if (hoverelement !== target) {
-                    hoverelement?.classList.remove("hand-hover");
-                    target?.classList.add("hand-hover");
-                    hoverelement = target;
-                }
-                element?.click();
+
+
             }
             if(distance>0.08){
                 pinching=false;
+            }                
+            const element =document.elementFromPoint(parseFloat(cursor.style.left),parseFloat(cursor.style.top));
+            const target = element?.closest("button, a, .card");                
+            if (hoverelement !== target) {
+                hoverelement?.classList.remove("hand-hover");
+                target?.classList.add("hand-hover");
+                hoverelement = target;
             }
+            element?.click();
             //pinkyy
             if(pinkyup){
                 const rotation=(0.5-pinkyt.x)*0.15;
@@ -271,3 +273,20 @@ function updatedowns(){
         items.appendChild(row);
     });
 }
+document.querySelectorAll(".card").forEach(card=>{
+    const addbutton=card.querySelector("button");
+    addbutton.addEventListener("click",()=>{
+        addtodown(card)
+    })
+});
+document,getElementById("alld").addEventListener("click",async()=>{
+    for(const item of selfiles){
+        const link =document.createElement("a");
+        link.href=item.file;
+        link.download=item.file.split("/").pop();
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        await new Promise(resolve=>setTimeout(resolve,300));
+    }
+});
