@@ -53,16 +53,18 @@ function detectHands(){
             const x=1-hand[8].x;
             const y=hand[8].y;
             const cursor=document.getElementById("curse");
-            cursor.style.left=`${x*window.innerWidth}px`;
-            cursor.style.top=`${y*window.innerHeight}px`;
+            const rect=document.getElementById("screen").getBoundingClientRect();
+            cursor.style.left=`${rect.left+x*rect.width}px`;
+            cursor.style.top=`${rect.top+y*rect.height}px`;
+            cursor.style.display="block";
             console.log("cursor:",x,y);
             stats.textContent=`detected ${results.landmarks.length} hands`;
         }else{
             stats.textContent="no hands detected";
         }
-        requestAnimationFrame(detectHands);
+        
     }
-
+    requestAnimationFrame(detectHands);
 }
 button.addEventListener("click",async()=>{
     button.disabled=true;

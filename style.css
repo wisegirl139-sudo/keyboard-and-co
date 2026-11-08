@@ -73,3 +73,8 @@ button:hover{
     z-index: 100000000;
     transform: translate(-50%,-50%);
 }
+#screen{
+    width: 100vh;
+    height: 100vw;
+    position: relative;
+}
