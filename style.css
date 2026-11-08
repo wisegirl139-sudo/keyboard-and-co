@@ -50,5 +50,12 @@ header{
     font-family: inherit;
     border: 1px double #ac9c8d;
     padding: 10px 20px;
-
+    transition: 0.1s ease;
+    border-radius: 100px;
+}
+.card button:hover{
+    background-color: #ac9c8d;
+    color: #322d29;
+    box-shadow: 0 0 5px #efe9e1;
+    transform: translateY(-8px);
 }
