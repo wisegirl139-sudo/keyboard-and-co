@@ -94,16 +94,19 @@ function detectHands(){
                 }
             }else{
                 thumbsupactive=false;
-            }
+            }// middle finger , it scrolls
             if(middleup && !indexup && !ringup && !pinkyUp){
-                const currentY=hand[12].y;
+                const currentx=hand[12].x;
+                const currenty=hand[12].y;
                 if(lastmiddley !==null){
-                    const movement=lastmiddley-currentY;
-                    window.scrollBy(0,movement*1500);
+                    const movementx=lastmiddley.x-currentx;
+                    const movementy=lastmiddley.y-currenty;
+                    document.querySelector(".cardcont").scrollBy(movementx*1500,0);
+                    window.scrollBy(0,movementy*1500);
                 }
-                lastmiddley=currentY;
+                lastmiddley={x:currentx,y:currenty};
             }else{
-                lastmiddley=null;
+                lastmiddley=null
             }
             stats.textContent=`pinch distance:${distance.toFixed(3)}`;
             console.log("pinch distance",distance);
