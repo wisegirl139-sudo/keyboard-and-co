@@ -62,19 +62,21 @@ button:hover{
 #webc{
     transform: scaleX(-1);
 }
-#curse{
+#curse {
     width: 20px;
     height: 20px;
     background: #efe9e1;
     border: 2px solid #322d29;
     border-radius: 50%;
     position: fixed;
+    left: 50%;
+    top: 50%;
     pointer-events: none;
     z-index: 100000000;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    display: block;
 }
 #screen{
-    width: 100vh;
-    height: 100vw;
-    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
