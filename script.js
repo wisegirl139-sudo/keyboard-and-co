@@ -95,3 +95,19 @@ sce.add(new THREE.HemisphereLight(0xffffff,0x604020,3));
 const light =new THREE.DirectionalLight(0xffffff,2);
 light.position.set(3,5,5);
 sce.add(light);
+//adding model
+const load=new OBJLoader();
+const pivot=new THREE.Group();
+sce.add(pivot);
+load.load("./models/main.obj",obj=>{
+    obj.traverse(part=>{
+        if(part.isMesh){
+            part.material=new THREE.MeshStandardMaterial({
+                color:0x72383d,
+                metalness:0.5,
+                roughness:0.4
+            });
+        }
+    });
+    const bounds=new THREE.Box3().setFromObject(obj);
+})
