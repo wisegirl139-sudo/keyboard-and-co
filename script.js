@@ -111,11 +111,11 @@ load.load("./models/main.obj",obj=>{
     });
     const bounds=new THREE.Box3().setFromObject(obj);
     const size=bounds.getSize(new THREE.Vector3());
-    const maxsize=Math.max(size.x,size.y,size.size);
+    const maxsize=Math.max(size.x,size.y,size.z);
     if(!maxsize||!Number.isFinite(maxsize)) return;
     obj.scale.setScalar(3/maxsize);
     const newbounds=new THREE.Box3().setFromObject(obj);
-    const centre=newbounds.getCentre(new THREE.Vector3());
+    const centre=newbounds.getCenter(new THREE.Vector3());
     obj.position.sub(centre);
     pivot.add(obj);
     //lights camera , no action yet
@@ -131,3 +131,17 @@ controls.target.set(0,0,0);
 controls.enableDamping=true;
 controls.autoRotate=false;
 //now we rotate
+function animate(){
+    requestAnimationFrame(animate);
+    const wid=box.clientWidth;
+    const hei=box.clientHeight;
+    if(wid>0 && hei>0){
+        render.setSize(wid,hei,false);
+        lca.aspect=wid/hei;
+        lca.updateProjectionMatrix();
+        pivot.rotation.y+=0.01;
+        controls.update();
+        render.render(sce,lca);
+    }
+}
+animate();
