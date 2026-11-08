@@ -63,28 +63,27 @@ function detectHands(){
             cursor.style.display="block";
             console.log("cursor:",x,y);
             stats.textContent=`detected ${results.landmarks.length} hands`;
+            //pinchy pinch
+            const thumb =hand[4];
+            const index=hand[8];
+            const distance=Math.hypot(
+                thumb.x -index.x,
+                thumb.y-index.y
+            );
+            if(distance<0.05 && !pinching){
+                pinching=true;
+                const cursor=document.getElementById("curse");
+                const element =document.elementFromPoint(parseFloat(cursor.style.left),parseFloat(cursor.style.top));
+                element?.click();
+            }
+            if(distance>0.08){
+                pinching=false;
+            }
         }else{
             stats.textContent="no hands detected";
-        }
-        //pinchy pinch
-        const hand=results.landmarks[0];
-        const thumb =hand[4];
-        const index=hand[8];
-        const distance=Math.hypot(
-            thumb.x -index.x,
-            thumb.y-index.y
-        );
-        if(distance<0.05 && !pinching){
-            pinching=true;
-            const cursor=document.getElementById("curse");
-            const element =document.elementFromPoint(parseFloat(cursor.style.left),parseFloat(cursor.style.top));
-            element?.click();
-        }
-        if(distance>0.08){
             pinching=false;
-        }
-        
-        
+            document.getElementById("curse").style.display="none";
+        }        
     }
     requestAnimationFrame(detectHands);
 }
