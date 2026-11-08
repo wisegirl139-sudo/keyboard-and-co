@@ -13,13 +13,13 @@ typtit();
 const button=document.getElementById("handc");
 const video=document.getElementById("webc");
 const stats =document.getElementById("handstats");
-let HandLandmarker;
+let handDetector;
 async function handtrack() { //well done if u noticed we're making it hand controlled
     stats.textContent="gettin media pipe";
     //actually gettting media pipe now
     const vision=await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
     //model 
-    handtrack=await HandLandmarker.createFromOptions(vision,{
+    handDetector=await HandLandmarker.createFromOptions(vision,{
         baseOptions:{
             modelAssetPath:"https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"
         },
@@ -31,5 +31,18 @@ async function handtrack() { //well done if u noticed we're making it hand contr
         video:true
     });
     video.srcObject=stream;
-    
+    await video.play();
+    stats.textContent="hand tracking active";
+    detectHands();
+}
+function detectHands(){
+    if(video.readyState>=2){
+        const results=handDetector.detectForVideo(
+            video,performance.now()
+        );
+        if(results.landmarks.length>0){
+            stats.textContent=`detected ${results.landmarks.length} hands`;
+            console.log(results.landmarks);
+        }
+    }
 }
