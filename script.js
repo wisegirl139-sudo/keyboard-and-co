@@ -47,21 +47,22 @@ function detectHands(){
             stats.textContent="no hands detected";
     
         }
+        //indexxx finger 
+        if(results.landmarks.length>0){
+            const hand= results.landmarks[0];
+            const x=1-hand[8].x;
+            const y=hand[8].y;
+            const cursor=document.getElementById("curse");
+            cursor.style.left=`${x*window.innerWidth}px`;
+            cursor.style.top=`${y*window.innerHeight}px`;
+            console.log("cursor:",x,y);
+            stats.textContent=`detected ${results.landmarks.length} hands`;
+        }else{
+            stats.textContent="no hands detected";
+        }
+        requestAnimationFrame(detectHands);
     }
-    //indexxx finger 
-    if(results.landmarks.length>0){
-        const hand= results.landmarks[0];
-        const x=1-hand[8].x;
-        const y=hand[8].y;
-        const cursor=document.getElementById("curse");
-        cursor.style.left=`${x*window.innerWidth}px`;
-        cursor.style.top=`${y*window.innerHeight}px`;
-        console.log("cursor:",x,y);
-        stats.textContent=`detected ${results.landmarks.length} hands`;
-    }else{
-        stats.textContent="no hands detected";
-    }
-    requestAnimationFrame(detectHands);
+
 }
 button.addEventListener("click",async()=>{
     button.disabled=true;

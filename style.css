@@ -64,4 +64,12 @@ button:hover{
 }
 #curse{
     width: 20px;
+    height: 20px;
+    background: #efe9e1;
+    border: 2px solid #322d29;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 100000000;
+    transform: translate(-50%,-50%);
 }
