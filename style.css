@@ -13,3 +13,11 @@ body{
     text-align: center;
     font-size: 50px;
 }
+.cardcont{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 60px auto;
+    padding: 20px;
+}
