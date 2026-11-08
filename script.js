@@ -90,3 +90,8 @@ const render= new THREE.WebGLRenderer({
 render.setPixelRatio(window.devicePixelRatio);
 render.setSize(box.clientWidth,box.clientHeight);
 box.appendChild(render.domElement);
+//lightinggg
+sce.add(new THREE.HemisphereLight(0xffffff,0x604020,3));
+const light =new THREE.DirectionalLight(0xffffff,2);
+light.position.set(3,5,5);
+sce.add(light);
