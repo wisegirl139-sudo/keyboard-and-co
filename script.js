@@ -19,8 +19,17 @@ async function handtrack() { //well done if u noticed we're making it hand contr
     //actually gettting media pipe now
     const vision=await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
     //model 
-    handtrack=await HandLandmarker.createFromOptions(vision,
-        baseOptions
-    )
+    handtrack=await HandLandmarker.createFromOptions(vision,{
+        baseOptions:{
+            modelAssetPath:"https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"
+        },
+        runningMode:"VIDEO",
+        numHands:2}
+    );
+    //getting acess bc we legal
+    const stream= await navigator.mediaDevices.getUserMedia({
+        video:true
+    });
+    video.srcObject=stream;
     
 }
