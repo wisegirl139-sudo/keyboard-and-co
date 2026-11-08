@@ -79,15 +79,3 @@ button.addEventListener("click",async()=>{
     }
 });
 //3d model timee
-const scene= new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(45,window.innerWidth/450,0.1,1000);
-camera.position.z=5;
-const renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(window.innerWidth,450);
-renderer.setPixelRatio(window.devicePixelRatio);
-document.getElementById("main").appendChild(renderer.domElement);
-//prelims most done lightign timee
-const light=new THREE.DirectionalLight(0xffffff,3);
-light.position.set(2,3,5);
-scene.add(light);
-scene.add(new THREE.AmbientLight(0xffffff,1));
