@@ -110,4 +110,13 @@ load.load("./models/main.obj",obj=>{
         }
     });
     const bounds=new THREE.Box3().setFromObject(obj);
+    const size=bounds.getSize(new THREE.Vector3());
+    const maxsize=Math.max(size.x,size.y,size.size);
+    if(!maxsize||!Number.isFinite(maxsize)) return;
+    obj.scale.setScalar(3/maxsize);
+    const newbounds=new THREE.Box3().setFromObject(obj);
+    const centre=newbounds.getCentre(new THREE.Vector3());
+    obj.position.sub(centre);
+    pivot.add(obj);
+
 })
