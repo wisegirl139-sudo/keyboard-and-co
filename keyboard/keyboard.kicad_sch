@@ -13755,10 +13755,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "960ba6c0-23d0-453a-8645-b44fff0b0a28")
+			(uuid "960ba6c0-23d0-453a-8645-b44fff0b0a29")
 		)
 		(pin "2"
-			(uuid "7ad144ea-237d-4c6b-a3e7-2f6b604b4edb")
+			(uuid "7ad144ea-237d-4c6b-a3e7-2f6b604b4edc")
 		)
 		(instances
 			(project "keyboard"
@@ -17515,10 +17515,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "093946fd-2149-4274-99ae-f2d2db71c2bb")
+			(uuid "093946fd-2149-4274-99ae-f2d2db71c2bc")
 		)
 		(pin "2"
-			(uuid "37b5d800-fdda-4c67-8e93-e27cae6b20d0")
+			(uuid "37b5d800-fdda-4c67-8e93-e27cae6b20d1")
 		)
 		(instances
 			(project "keyboard"
