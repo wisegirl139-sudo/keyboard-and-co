@@ -55,6 +55,8 @@ button.addEventListener("click",async()=>{
     try{
         await handtrack();
     }catch(error){
-        console
+        console.error(error);
+        stats.textContent="check console";
+        button.disabled=false;
     }
-})
+});

@@ -44,7 +44,7 @@ header{
     font-size: 14px;
     line-height: 1.5;
 }
-.card button{
+button{
     background-color: #72383d;
     color: #efe9e1;
     font-family: inherit;
@@ -53,7 +53,7 @@ header{
     transition: 0.1s ease;
     border-radius: 100px;
 }
-.card button:hover{
+button:hover{
     background-color: #ac9c8d;
     color: #322d29;
     box-shadow: 0 0 5px #efe9e1;
