@@ -75,11 +75,10 @@ function detectHands(){
             );
             stats.textContent=`pinch distance:${distance.toFixed(3)}`;
             console.log("pinch distance",distance);
-            if(lastpinchdist !==null){
-                const change=distance-lastpinchdist; //lastpinch dist sounds german icl
-                document.querySelectorAll(".cardimg canvas").forEach(canvas=>{});
-            }
-            lastpinchdist=distance;
+            const zoom=THREE.MathUtils.mapLinear(distance,0.03,0.20,2,8);
+            cameras.forEach(camera=>{
+                camera.position.setLength(zoom);
+            });
             if(distance<0.05 && !pinching){
                 pinching=true;
                 const cursor=document.getElementById("curse");
