@@ -43,6 +43,18 @@ function detectHands(){
         if(results.landmarks.length>0){
             stats.textContent=`detected ${results.landmarks.length} hands`;
             console.log(results.landmarks);
+        }else{
+            stats.textContent="no hands detected";
+    
         }
     }
+    requestAnimationFrame(detectHands);
 }
+button.addEventListener("click",async()=>{
+    button.disabled=true;
+    try{
+        await handtrack();
+    }catch(error){
+        console
+    }
+})
