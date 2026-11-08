@@ -118,5 +118,9 @@ load.load("./models/main.obj",obj=>{
     const centre=newbounds.getCentre(new THREE.Vector3());
     obj.position.sub(centre);
     pivot.add(obj);
-
-})
+    //lights camera , no action yet
+    lca.position.set(3,2,4);
+    lca.lookAt(0,0,0);
+},undefined, error=>{
+    console.error("model failed",error);
+});
