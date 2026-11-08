@@ -88,7 +88,7 @@ const models=[
     {id:"mkeys",file:"./models/macros.obj"}
 ];
 models.forEach(model=>{
-    const box=document.getElementById(models.id);
+    const box=document.getElementById(model.id);
     if(!box) return;
     const sce=new THREE.Scene();
     const lca=new THREE.PerspectiveCamera(45,1,0.1,100);
