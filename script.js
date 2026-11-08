@@ -41,7 +41,8 @@ async function handtrack() { //well done if u noticed we're making it hand contr
 let pinching=false;
 let pivots=[];
 let cameras=[];
-
+let thumbsupactive=false;
+let lastmiddley=null;
 function detectHands(){
     if(video.readyState>=2){
         const results=handDetector.detectForVideo(
@@ -69,20 +70,47 @@ function detectHands(){
             cursor.style.display="block";
             console.log("cursor:",x,y);
             stats.textContent=`detected ${results.landmarks.length} hands`;
-            //pinchy pinch
+            //pinchy pinch-thumb
             const thumb =hand[4];
             const index=hand[8];
             const distance=Math.hypot(
                 thumb.x -index.x,
                 thumb.y-index.y
             );
+            //fing pos
+            const indexup=hand[8].y<hand[6].y;
+            const middleup=hand[12].y<hand[10].y;
+            const ringup=hand[16].y<hand[14].y;
+            const pinkyUp=hand[20].y<hand[18].y;
+            const thumbup=hand[4].y<hand[3].y;
+            const fingersfolded=!indexup && !middleup && !ringup && !pinkyUp;
+            if(thumbup && fingersfolded){
+                if(!thumbsupactive){
+                    thumbsupactive=true;
+                    const card=hoverelement?.closest(".card");
+                    const addButton=card?.querySelector("button");
+                    addButton?.click();
+                }
+            }else{
+                thumbsupactive=false;
+            }
+            if(middleup && !indexup && !ringup && !pinkyUp){
+                const currentY=hand[12].y;
+                if(lastmiddley !==null){
+                    const movement=lastmiddley=currentY;
+                    window.scrollBy(0,movement*1500);
+                }
+                lastmiddley=currentY;
+            }else{
+                lastmiddley=null;
+            }
             stats.textContent=`pinch distance:${distance.toFixed(3)}`;
             console.log("pinch distance",distance);
             const zoom=THREE.MathUtils.mapLinear(distance,0.03,0.20,2,8);
             cameras.forEach(camera=>{
                 camera.position.setLength(zoom);
             });
-            if(distance<0.05 && !pinching){
+            if(distance<0.05 && !pinching && !thumbsupactive){
                 pinching=true;
                 const cursor=document.getElementById("curse");
                 const element =document.elementFromPoint(parseFloat(cursor.style.left),parseFloat(cursor.style.top));
