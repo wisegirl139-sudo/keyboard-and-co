@@ -80,68 +80,78 @@ button.addEventListener("click",async()=>{
     }
 });
 //3d model timee
-const box=document.getElementById("main");
-const sce=new THREE.Scene();
-const lca=new THREE.PerspectiveCamera(45,1,0.1,100);
-const render= new THREE.WebGLRenderer({
-    alpha:true,
-    antialias:true
-});
-render.setPixelRatio(window.devicePixelRatio);
-render.setSize(box.clientWidth,box.clientHeight);
-box.appendChild(render.domElement);
-//lightinggg
-sce.add(new THREE.HemisphereLight(0xffffff,0x604020,3));
-const light =new THREE.DirectionalLight(0xffffff,2);
-light.position.set(3,5,5);
-sce.add(light);
-//adding model
-const load=new OBJLoader();
-const pivot=new THREE.Group();
-sce.add(pivot);
-load.load("./models/main.obj",obj=>{
-    obj.traverse(part=>{
-        if(part.isMesh){
-            part.material=new THREE.MeshStandardMaterial({
-                color:0x72383d,
-                metalness:0.5,
-                roughness:0.4
-            });
-        }
+const models=[
+    {id:"main",file:"./models/main.obj"},
+    {id:"numpad",file:"./models/numpad.obj"},
+    {id:"fkeys",file:"./models/FN_row.obj"},
+    {id:"arrows",file:"./models/arrows.obj"},
+    {id:"mkeys",file:"./models/macros.obj"}
+];
+models.forEach(model=>{
+    const box=document.getElementById(models.id);
+    if(!box) return;
+    const sce=new THREE.Scene();
+    const lca=new THREE.PerspectiveCamera(45,1,0.1,100);
+    const render= new THREE.WebGLRenderer({
+        alpha:true,
+        antialias:true
     });
-    const bounds=new THREE.Box3().setFromObject(obj);
-    const size=bounds.getSize(new THREE.Vector3());
-    const maxsize=Math.max(size.x,size.y,size.z);
-    if(!maxsize||!Number.isFinite(maxsize)) return;
-    obj.scale.setScalar(3/maxsize);
-    const newbounds=new THREE.Box3().setFromObject(obj);
-    const centre=newbounds.getCenter(new THREE.Vector3());
-    obj.position.sub(centre);
-    pivot.add(obj);
-    //lights camera , no action yet
-    lca.position.set(3,2,4);
-    lca.lookAt(0,0,0);
-},undefined, error=>{
-    console.error("model failed",error);
-});
+    render.setPixelRatio(window.devicePixelRatio);
+    render.setSize(box.clientWidth,box.clientHeight);
+    box.appendChild(render.domElement);
+    //lightinggg
+    sce.add(new THREE.HemisphereLight(0xffffff,0x604020,3));
+    const light =new THREE.DirectionalLight(0xffffff,2);
+    light.position.set(3,5,5);
+    sce.add(light);
+    //adding model
+    const load=new OBJLoader();
+    const pivot=new THREE.Group();
+    sce.add(pivot);
+    load.load(model.file,obj=>{
+        obj.traverse(part=>{
+            if(part.isMesh){
+                part.material=new THREE.MeshStandardMaterial({
+                    color:0x72383d,
+                    metalness:0.5,
+                    roughness:0.4
+                });
+            }
+        });
+        const bounds=new THREE.Box3().setFromObject(obj);
+        const size=bounds.getSize(new THREE.Vector3());
+        const maxsize=Math.max(size.x,size.y,size.z);
+        if(!maxsize||!Number.isFinite(maxsize)) return;
+        obj.scale.setScalar(3/maxsize);
+        const newbounds=new THREE.Box3().setFromObject(obj);
+        const centre=newbounds.getCenter(new THREE.Vector3());
+        obj.position.sub(centre);
+        pivot.add(obj);
+        //lights camera , no action yet
+        lca.position.set(3,2,4);
+        lca.lookAt(0,0,0);
+    },undefined, error=>{
+        console.error("model failed",error);
+    });
 
-//action time
-const controls=new OrbitControls(lca,render.domElement);
-controls.target.set(0,0,0);
-controls.enableDamping=true;
-controls.autoRotate=false;
-//now we rotate
-function animate(){
-    requestAnimationFrame(animate);
-    const wid=box.clientWidth;
-    const hei=box.clientHeight;
-    if(wid>0 && hei>0){
-        render.setSize(wid,hei,false);
-        lca.aspect=wid/hei;
-        lca.updateProjectionMatrix();
-        pivot.rotation.y+=0.01;
-        controls.update();
-        render.render(sce,lca);
+    //action time
+    const controls=new OrbitControls(lca,render.domElement);
+    controls.target.set(0,0,0);
+    controls.enableDamping=true;
+    controls.autoRotate=false;
+    //now we rotate
+    function animate(){
+        requestAnimationFrame(animate);
+        const wid=box.clientWidth;
+        const hei=box.clientHeight;
+        if(wid>0 && hei>0){
+            render.setSize(wid,hei,false);
+            lca.aspect=wid/hei;
+            lca.updateProjectionMatrix();
+            pivot.rotation.y+=0.01;
+            controls.update();
+            render.render(sce,lca);
+        }
     }
-}
-animate();
+    animate();
+});
