@@ -110,15 +110,17 @@ function detectHands(){
             }
             stats.textContent=`pinch distance:${distance.toFixed(3)}`;
             console.log("pinch distance",distance);
-            const zoom=THREE.MathUtils.mapLinear(distance,0.03,0.20,2,8);
-            cameras.forEach(camera=>{
+            const zoom = THREE.MathUtils.clamp(
+                THREE.MathUtils.mapLinear(distance, 0.03, 0.20, 2, 8),
+                2, 8
+            );
+            cameras.forEach(camera => {
                 camera.position.setLength(zoom);
             });
             if(distance<0.05 && !pinching && !thumbsupactive){
                 pinching=true;
                 const cursor=document.getElementById("curse");
-
-
+                hoverelement?.click();
             }
             if(distance>0.08){
                 pinching=false;
@@ -130,7 +132,6 @@ function detectHands(){
                 target?.classList.add("hand-hover");
                 hoverelement = target;
             }
-            element?.click();
             //pinkyy
             if(pinkyup){
                 const rotation=(0.5-pinkyt.x)*0.15;
@@ -273,13 +274,15 @@ function updatedowns(){
         items.appendChild(row);
     });
 }
-document.querySelectorAll(".card").forEach(card=>{
-    const addbutton=card.querySelector("button");
-    addbutton.addEventListener("click",()=>{
-        addtodown(card)
-    })
+document.querySelectorAll(".card").forEach(card => {
+    const addbutton = card.querySelector("button");
+
+    addbutton.addEventListener("click", () => {
+        console.log("ADD CLICKED");
+        addtodown(card);
+    });
 });
-document,getElementById("alld").addEventListener("click",async()=>{
+document.getElementById("alld").addEventListener("click",async()=>{
     for(const item of selfiles){
         const link =document.createElement("a");
         link.href=item.file;
