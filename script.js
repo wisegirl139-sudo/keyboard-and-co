@@ -88,13 +88,13 @@ function detectHands(){
             if(thumbup && fingersfolded){
                 if(!thumbsupactive){
                     thumbsupactive=true;
-                    const card=hoverelement?.closest(".card");
-                    const addButton=card?.querySelector("button");
-                    addButton?.click();
+                    const button=hoverelement?.closest("button");
+                    button?.click();
                 }
             }else{
                 thumbsupactive=false;
-            }// middle finger , it scrolls
+            }
+            // middle finger , it scrolls
             if(middleup && !indexup && !ringup && !pinkyUp){
                 const currentx=hand[12].x;
                 const currenty=hand[12].y;
@@ -233,3 +233,9 @@ models.forEach(model=>{
     }
     animate();
 });
+//downlolading files time
+let selfiles=[];
+function addtodown(card){
+    const name=card.querySelector("h2").textContent;
+    const model=models.find(item=>item.id===card.querySelector(".cardimg").id)
+}
