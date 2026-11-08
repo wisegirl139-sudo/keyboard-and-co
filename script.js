@@ -83,7 +83,7 @@ button.addEventListener("click",async()=>{
 const models=[
     {id:"main",file:"./models/main.obj"},
     {id:"numpad",file:"./models/numpad.obj"},
-    {id:"fkeys",file:"./models/FN_row.obj"},
+    {id:"fkeys",file: "./models/FN_row.obj"},
     {id:"arrows",file:"./models/arrows.obj"},
     {id:"mkeys",file:"./models/macros.obj"}
 ];
