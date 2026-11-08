@@ -48,6 +48,16 @@ function detectHands(){
     
         }
     }
+    //indexxx finger 
+    if(results.landmarks.length>0){
+        const hand= results.landmarks[0];
+        const x=1-hand[8].x;
+        const y=hand[8].y;
+        console.log("cursor:",x,y);
+        stats.textContent=`detected ${results.landmarks.length} hands`;
+    }else{
+        stats.textContent="no hands detected";
+    }
     requestAnimationFrame(detectHands);
 }
 button.addEventListener("click",async()=>{
@@ -60,3 +70,4 @@ button.addEventListener("click",async()=>{
         button.disabled=false;
     }
 });
+//index timeee
