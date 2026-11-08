@@ -62,3 +62,6 @@ button:hover{
 #webc{
     transform: scaleX(-1);
 }
+#curse{
+    width: 20px;
+}
