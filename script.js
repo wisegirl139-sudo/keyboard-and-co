@@ -43,6 +43,7 @@ let pivots=[];
 let cameras=[];
 let thumbsupactive=false;
 let lastmiddley=null;
+let hoverelement=null;
 function detectHands(){
     if(video.readyState>=2){
         const results=handDetector.detectForVideo(
@@ -97,7 +98,7 @@ function detectHands(){
             if(middleup && !indexup && !ringup && !pinkyUp){
                 const currentY=hand[12].y;
                 if(lastmiddley !==null){
-                    const movement=lastmiddley=currentY;
+                    const movement=lastmiddley-currentY;
                     window.scrollBy(0,movement*1500);
                 }
                 lastmiddley=currentY;
@@ -114,6 +115,12 @@ function detectHands(){
                 pinching=true;
                 const cursor=document.getElementById("curse");
                 const element =document.elementFromPoint(parseFloat(cursor.style.left),parseFloat(cursor.style.top));
+                const target = element?.closest("button, a, .card");
+                if (hoverelement !== target) {
+                    hoverelement?.classList.remove("hand-hover");
+                    target?.classList.add("hand-hover");
+                    hoverelement = target;
+                }
                 element?.click();
             }
             if(distance>0.08){
