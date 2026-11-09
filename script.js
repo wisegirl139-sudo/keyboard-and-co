@@ -357,3 +357,52 @@ const totgroup=new THREE.Group();
 totpivot.add(totgroup);
 const totloader=new OBJLoader();
 const totloaded={};
+const totloading=new Set();
+
+const totpos={
+    main:[0,0,0],
+    numpad:[4,0,0],
+    fkeys:[0,0,-2],
+    arrows:[2,0,3],
+    mkeys:[-2,0,2]
+};
+const defaultdirec=new THREE.Vector3(0,0.6,1).normalize();
+function resizetot(){
+    const w=totcanvas.clientWidth;
+    const h=totcanvas.clientHeight;
+    if(w===0||h===0) return false;
+    totrenderer.setSize(w,h,false);
+    totcamera.aspect=w/h;
+    totcamera.updateProjectionMatrix();
+    return true;
+}
+function fittot(resetDirection=false){
+    if(totgroup.children.length===0) return;
+    if(!resizetot()) return;
+    totgroup.updateMatrixWorld(true);
+    const allbox=new THREE.Box3().setFromObject(totgroup);
+    const mainobj=totgroup.children.find(c=>c.userData.id==="main");
+    const pivotpoint=mainobj
+    ? new THREE.Box3().setFromObject(mainobj).getCenter(new THREE.Vector3()):
+    allbox.getCenter(new THREE.Vector3());
+    let radius=0;
+    for(const x of [allbox.min.x, allbox.max.x])
+    for(const y of [allbox.min.y,allbox.max.y])
+    for(const x of [allbox.min.z,allbox.max.z]){
+        radius=Math.max(radius,pivotpoint.distanceTo(new THREE.Vector3(x,y,z)));
+    }
+    if(!radius||!Number.isFinite(radius)) return;
+    //this is taking all my brain power btw
+    const vfov=THREE.MathUtils.degToRad(totcamera.fov);
+    const hfov=2*Math.atan(Math.tan(vfov/2)*totcamera.aspect);
+    const dist=(radius/Math.sin(Math.min(vfov,hfov)/2))*1.05;
+    const dir=resetDirection?defaultdirec.clone():totcamera.position.clone().sub(totcontrols.target).normalize();
+    if(!Number.isFinite(dir.x)||dir.lengthSq()===0)dir.copy(defaultdirec);
+    totcontrols.target.copy(pivotpoint);
+    totcamera.position.copy(pivotpoint).addScaledVector(dir,dist);
+    totcamera.near=dist/100;
+    totcamera.far=dist*100;
+    totcamera.updateProjectionMatrix();
+    totcontrols.update();
+
+}
