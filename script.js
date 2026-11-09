@@ -334,3 +334,26 @@ guide.addEventListener("click",(event)=>{
         guide.style.display="none";
     }
 });
+const totcanvas=document.getElementById("totcanvas");
+const totscene= new THREE.Scene();
+totscene.background=new THREE.Color(0x322d29);
+const totcamera=new THREE.PerspectiveCamera(45,1,0.1,1000);
+totcamera.position.set(0,5,10);
+const totrenderer=new THREE.WebGLRenderer({antialias:true});
+totrenderer.setPixelRatio(window.devicePixelRatio);
+totrenderer.domElement.style.display="block";
+totrenderer.domElement.style.width="100%";
+totrenderer.domElement.style.height="100%";
+totcanvas.appendChild(totrenderer.domElement);
+totscene.add(new THREE.AmbientLight(0xffffff,2));
+const totlight=new THREE.DirectionalLight(0xffffff,3);
+totlight.position.set(5,10,7);
+totscene.add(totlight);
+const totcontrols=new OrbitControls(totcamera,totrenderer.domElement);
+totcontrols.enableDamping=true; //really craving some tots yk 
+const totpivot=new THREE.Group();
+totscene.add(totpivot);
+const totgroup=new THREE.Group();
+totpivot.add(totgroup);
+const totloader=new OBJLoader();
+const totloaded={};
