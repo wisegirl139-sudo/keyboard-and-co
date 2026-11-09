@@ -29,20 +29,26 @@ async function handtrack() { //well done if u noticed we're making it hand contr
         video.srcObject=null;
         document.getElementById("curse").style.display="none";
         stats.textContent="hand tracking off";
+        pinching=false;
+        thumbsupactive=false;
+        lastmiddley=null;
+        hoverelement?.classList.remove("hand-hover");
+        hoverelement=null;
         return;
     }
     stats.textContent="gettin media pipe";
     //actually gettting media pipe now
-    
-    const vision=await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
-    //model 
-    handDetector=await HandLandmarker.createFromOptions(vision,{
-        baseOptions:{
-            modelAssetPath:"https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"
-        },
-        runningMode:"VIDEO",
-        numHands:2}
-    );
+    if(!handDetector){
+        const vision=await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
+        //model 
+        handDetector=await HandLandmarker.createFromOptions(vision,{
+            baseOptions:{
+                modelAssetPath:"https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"
+            },
+            runningMode:"VIDEO",
+            numHands:2}
+        );
+    }
     //getting acess bc we legal
     const stream= await navigator.mediaDevices.getUserMedia({
         video:true
@@ -68,7 +74,6 @@ function detectHands(){
         );
         if(results.landmarks.length>0){
             stats.textContent=`detected ${results.landmarks.length} hands`;
-            console.log(results.landmarks);
         }else{
             stats.textContent="no hands detected";
     
@@ -86,7 +91,6 @@ function detectHands(){
             const rect=document.getElementById("screen").getBoundingClientRect();
             cursor.style.left=`${rect.left+x*rect.width}px`;
             cursor.style.top=`${rect.top+y*rect.height}px`;
-            console.log("cursor:",x,y);
             stats.textContent=`detected ${results.landmarks.length} hands`;
             //pinchy pinch-thumb
             const thumb =hand[4];
@@ -126,7 +130,6 @@ function detectHands(){
                 lastmiddley=null
             }
             stats.textContent=`pinch distance:${distance.toFixed(3)}`;
-            console.log("pinch distance",distance);
             const zoom = THREE.MathUtils.clamp(
                 THREE.MathUtils.mapLinear(distance, 0.03, 0.20, 2, 8),
                 2, 8
@@ -172,6 +175,7 @@ button.addEventListener("click",async()=>{
     button.disabled=true;
     try{
         await handtrack();
+        button.textContent=handtracking?"turn off hand control":"turn on hand control";
     }catch(error){
         console.error(error);
         stats.textContent="check console";
