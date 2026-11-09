@@ -157,3 +157,52 @@ button:hover{
     background: #efe9e1;
     box-shadow: 0 0 20px #72383d;
 }
+#guideb{
+    background: #322d29;
+    color: #efe9e1;
+    border: 1px solid #ac9c8d;
+    padding: 10px 18px;
+    font-family: inherit;
+    border-radius: 5px;
+}
+#guideo{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 10000000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+#guidebox{
+    position: relative;
+    background: #322d29;
+    color: #d1c7bd;
+    border: 2px solid #ac9c8d;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 100%;
+    width: 450px;
+}
+#guidebox h2{
+    color: #efe9e1;
+    margin-top: 0;
+}
+#guidebox p{
+    line-height: 1.6;
+}
+#cguide{
+    background: #72383d;
+    color: #efe9e1;
+    border: none;
+    padding: 8px 14px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 4px;
+    float: right;
+}
+#cguide:hover{
+    background: #ac9c8d;
+    box-shadow: 0 0 5px #efe9e1;
+}

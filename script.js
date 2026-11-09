@@ -293,3 +293,17 @@ document.getElementById("alld").addEventListener("click",async()=>{
         await new Promise(resolve=>setTimeout(resolve,300));
     }
 });
+const guide=document.getElementById("guideo");
+const guideb=document.getElementById("guideb");
+const cguide=document.getElementById("cguide");
+guideb.addEventListener("click",()=>{
+    guide.style.display="flex";
+});
+cguide.addEventListener("click",()=>{
+    guide.style.display="none";
+});
+guide.addEventListener("click",(event)=>{
+    if(event.target===guide){
+        guide.style.display="none";
+    }
+});
