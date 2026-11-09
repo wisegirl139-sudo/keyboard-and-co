@@ -406,3 +406,20 @@ function fittot(resetDirection=false){
     totcontrols.update();
 
 }
+function updatetotes(){
+    totgroup.clear();
+    selfiles.forEach(item=>{
+        if(!totloaded[item.id]){
+            if(totloading.has(item.id)) return;
+            totloading.add(item.id);
+            totloader.load(item.file,object=>{
+                totloaded[item.id]=object;
+                totloading.delete(item.id);
+                updatetotes();
+            },undefined,error=>{
+                totloading.delete(item.id);
+                console.error("total model failed:",error);
+            })
+        }
+    })
+}
