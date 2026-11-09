@@ -207,3 +207,19 @@ button:hover{
     background: #ac9c8d;
     box-shadow: 0 0 5px #efe9e1;
 }
+#handc{
+    background: #322d29;
+    color: #efe9e1;
+    border: 1px solid #ac9c8d;
+    padding: 10px 18px;
+    font-family: inherit;
+    border-radius: 5px;
+}
+#handc:hover{
+    background: #ac9c8d;
+    color: #322d29;
+}
+#handc:active{
+    transform: scale(0.96);
+    box-shadow: 0 0 10px #d1c7bd;
+}
