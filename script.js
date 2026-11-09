@@ -299,6 +299,7 @@ function updatedowns(){
         row.append(name,remove);
         items.appendChild(row);
     });
+    updatetotes();
 }
 document.querySelectorAll(".card").forEach(card => {
     const addbutton = card.querySelector("button");
@@ -372,5 +373,28 @@ function updatetotes(){
             });
             return;
         }
-    })
+        const model=totloaded[item.id].clone();
+        const pos=totpositions[item.id]||[0,0,0];
+        model.position.set(pos[0],pos[1],pos[2]);
+        totgroup.add(model);
+    });
 }
+function animateTotal(){
+    requestAnimationFrame(animateTotal);
+    totcontrols.update();
+    totrenderer.render(totscene,totcamera);
+}
+animateTotal();
+document.getElementById("reset").addEventListener("click",()=>{
+    totcamera.position.set(0,5,10);
+    totcontrols.target.set(0,0,0);
+    totcontrols.update();
+
+});
+window.addEventListener("resize",()=>{
+    totcamera.aspect=totcanvas.clientWidth/totcanvas.clientHeight;
+    totcamera.updateProjectionMatrix();
+    totrenderer.setSize(
+        totcanvas.clientWidth,totcanvas.clientHeight
+    );
+});
