@@ -67,6 +67,7 @@ button:hover{
     transform: scaleX(-1);
 }
 #curse {
+    display: none;
     width: 20px;
     height: 20px;
     background: #efe9e1;

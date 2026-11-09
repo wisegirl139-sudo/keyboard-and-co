@@ -20,6 +20,7 @@ let handDetector;
 async function handtrack() { //well done if u noticed we're making it hand controlled
     stats.textContent="gettin media pipe";
     //actually gettting media pipe now
+    
     const vision=await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
     //model 
     handDetector=await HandLandmarker.createFromOptions(vision,{
@@ -35,6 +36,7 @@ async function handtrack() { //well done if u noticed we're making it hand contr
     });
     video.srcObject=stream;
     await video.play();
+    handtracking = true;//this for the cursor
     stats.textContent="hand tracking active";
     detectHands();
 }
@@ -44,6 +46,7 @@ let cameras=[];
 let thumbsupactive=false;
 let lastmiddley=null;
 let hoverelement=null;
+let handtracking = false;
 function detectHands(){
     if(video.readyState>=2){
         const results=handDetector.detectForVideo(
@@ -65,10 +68,10 @@ function detectHands(){
             const x=1-hand[8].x;
             const y=hand[8].y;
             const cursor=document.getElementById("curse");
+            cursor.style.display = handtracking ? "block" : "none";            
             const rect=document.getElementById("screen").getBoundingClientRect();
             cursor.style.left=`${rect.left+x*rect.width}px`;
             cursor.style.top=`${rect.top+y*rect.height}px`;
-            cursor.style.display="block";
             console.log("cursor:",x,y);
             stats.textContent=`detected ${results.landmarks.length} hands`;
             //pinchy pinch-thumb
