@@ -223,3 +223,41 @@ button:hover{
     transform: scale(0.96);
     box-shadow: 0 0 10px #d1c7bd;
 }
+#totes{
+    width: 90%;
+    margin: 50px auto;
+    color: #d1c7bd;
+    text-align: center;
+}
+#totes h2{
+    color: #efe9e1;
+    margin-bottom: 5px;
+}
+#totes p{
+    margin-bottom: 20px;
+}
+#totcanvas{
+    width: 100%;
+    height: 450px;
+    background: #322d29;
+    border: 2px solid #ac9c8d;
+    border-radius: 10px;
+    overflow:hidden;
+}
+#totcanvas canvas{
+    display:block;
+}
+#reset{
+    margin-top: 15px;
+    padding: 10px 22px;
+    background: #72383d;
+    color: #efe9e1;
+    border: 1px solid #ac9c8d;
+    border-radius: 5px;
+    font-family: inherit;
+    cursor: pointer;
+}
+#reset:hover{
+    background: #ac9c8d;
+    color: #322d29;
+}

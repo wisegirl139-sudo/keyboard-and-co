@@ -333,3 +333,44 @@ guide.addEventListener("click",(event)=>{
         guide.style.display="none";
     }
 });
+const totcanvas=document.getElementById("totcanvas");
+const totscene= new THREE.Scene();
+totscene.background=new THREE.Color(0x322d29);
+const totcamera=new THREE.PerspectiveCamera(45,totcanvas.clientWidth/totcanvas.clientHeight,0.1,1000);
+totcamera.position.set(0,5,10);
+const totrenderer=new THREE.WebGLRenderer({
+    antialias:true
+});
+totrenderer.setSize(totcanvas.clientWidth,totcanvas.clientHeight);
+totcanvas.appendChild(totrenderer.domElement);
+totscene.add(new THREE.AmbientLight(0xffffff,2));
+const totlight=new THREE.DirectionalLight(0xffffff,3);
+totlight.position.set(5,10,7);
+totscene.add(totlight);
+const totcontrols=new OrbitControls(
+    totcamera,totrenderer.domElement
+);
+totcontrols.enableDamping=true; // i really crave some tots now
+const totgroup=new THREE.Group();
+totscene.add(totgroup);
+const totloader=new OBJLoader();
+const totloaded={};
+const totpositions={
+    main:[0,0,0],
+    numpad:[4,0,0],
+    fkeys:[0,0,-2],
+    arrows:[2,0,2],
+    mkeys:[-2,0,2]
+};
+function updatetotes(){
+    totgroup.clear();
+    selfiles.forEach(item=>{
+        if(!totloaded[item.id]){
+            totloader.load(item.file,object=>{
+                totloaded[item.id]=object;
+                updatetotes();
+            });
+            return;
+        }
+    })
+}
