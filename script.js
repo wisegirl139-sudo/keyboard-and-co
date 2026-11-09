@@ -19,6 +19,18 @@ const video=document.getElementById("webc");
 const stats =document.getElementById("handstats");
 let handDetector;
 async function handtrack() { //well done if u noticed we're making it hand controlled
+    //off on ts
+    if(handtracking){
+        handtracking=false;
+        const stream=video.srcObject;
+        if(stream){
+            stream.getTracks().forEach(track=>track.stop());
+        }
+        video.srcObject=null;
+        document.getElementById("curse").style.display="none";
+        stats.textContent="hand tracking off";
+        return;
+    }
     stats.textContent="gettin media pipe";
     //actually gettting media pipe now
     
@@ -49,6 +61,7 @@ let lastmiddley=null;
 let hoverelement=null;
 let handtracking = false;
 function detectHands(){
+    if(!handtracking) return;
     if(video.readyState>=2){
         const results=handDetector.detectForVideo(
             video,performance.now()
@@ -150,7 +163,10 @@ function detectHands(){
             document.getElementById("curse").style.display="none";
         }        
     }
-    requestAnimationFrame(detectHands);
+    if(handtracking){
+        requestAnimationFrame(detectHands);
+    }
+    
 }
 button.addEventListener("click",async()=>{
     button.disabled=true;
@@ -159,6 +175,8 @@ button.addEventListener("click",async()=>{
     }catch(error){
         console.error(error);
         stats.textContent="check console";
+        button.disabled=false;
+    }finally{
         button.disabled=false;
     }
 });
