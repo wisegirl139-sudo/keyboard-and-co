@@ -131,3 +131,29 @@ button:hover{
     color: #efe9e1;
     border-radius: 5px;
 }
+.cartitem button{
+    background: #d1c7bd;
+    color: #322d29;
+    border: none;
+    padding: 8px 14px;
+    font-family: inherit;
+    border-radius: 5px;
+}
+.cartitem button:hover{
+    background: #efe9e1;
+    box-shadow: 0 0 10px #ac9c8d;
+}
+#alld{
+    background: #ac9c8d;
+    color: #322d29;
+    border: none;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+#alld:hover{
+    background: #efe9e1;
+    box-shadow: 0 0 20px #72383d;
+}
