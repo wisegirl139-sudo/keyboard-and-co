@@ -345,7 +345,7 @@ totrenderer.domElement.style.display="block";
 totrenderer.domElement.style.width="100%";
 totrenderer.domElement.style.height="100%";
 totcanvas.appendChild(totrenderer.domElement);
-totscene.add(new THREE.AmbientLight(0xffffff,2));
+totscene.add(new THREE.AmbientLight(0x72383d,2));
 const totlight=new THREE.DirectionalLight(0xffffff,3);
 totlight.position.set(5,10,7);
 totscene.add(totlight);
@@ -361,10 +361,10 @@ const totloading=new Set();
 
 const totpos={
     main:[0,0,0],
-    numpad:[4,0,0],
-    fkeys:[0,0,-2],
-    arrows:[2,0,3],
-    mkeys:[-2,0,2]
+    numpad:[0,0,0],
+    fkeys:[0,0,0],
+    arrows:[0,0,0],
+    mkeys:[0,0,0]
 };
 const defaultdirec=new THREE.Vector3(0,0.6,1).normalize();
 function resizetot(){
@@ -388,7 +388,7 @@ function fittot(resetDirection=false){
     let radius=0;
     for(const x of [allbox.min.x, allbox.max.x])
     for(const y of [allbox.min.y,allbox.max.y])
-    for(const x of [allbox.min.z,allbox.max.z]){
+    for(const z of [allbox.min.z,allbox.max.z]){
         radius=Math.max(radius,pivotpoint.distanceTo(new THREE.Vector3(x,y,z)));
     }
     if(!radius||!Number.isFinite(radius)) return;
@@ -419,7 +419,30 @@ function updatetotes(){
             },undefined,error=>{
                 totloading.delete(item.id);
                 console.error("total model failed:",error);
-            })
+
+            });
+            return;
         }
-    })
+        const model=totloaded[item.id].clone();
+        const pos=totpos[item.id]||[0,0,0];
+        model.position.set(pos[0],pos[1],pos[2]);
+        model.userData.id=item.id;
+        totgroup.add(model);
+    });
+    fittot();
 }
+function animatetote(){
+    requestAnimationFrame(animatetote);
+    totcontrols.update();
+    totrenderer.render(totscene,totcamera);
+}
+resizetot();
+animatetote();
+document.getElementById("reset").addEventListener("click",()=>{
+    totpivot.rotation.set(0,0,0);
+    fittot(true);
+});
+new ResizeObserver(()=>{resizetot();
+    fittot();
+
+}).observe(totcanvas);
