@@ -6,6 +6,7 @@ import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.180.0/exampl
 const text="Keyboard & Co";
 let i=0;
 function typtit(){ //dont think of it that way it stands for type title 
+    document.getElementById("curse").style.display = "none";
     if(i<text.length){
         document.getElementById("tit").textContent+=text[i];
         i++;
