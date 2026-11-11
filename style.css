@@ -261,3 +261,21 @@ button:hover{
     background: #ac9c8d;
     color: #322d29;
 }
+.key{
+    position: fixed;
+    left: 100%;
+    pointer-events: none;
+    z-index: -1;
+    animation: startravel linear infinite;
+}
+.key img{
+    width: 100%;
+}
+
+@keyframes startravel{
+    from{
+        transform: translateX(0);
+    }to{
+        transform: translateX(-110vw);
+    }
+}

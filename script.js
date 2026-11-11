@@ -446,3 +446,14 @@ new ResizeObserver(()=>{resizetot();
     fittot();
 
 }).observe(totcanvas);
+const keyim="key.png";
+for(let i=0;i<8;i++){
+    const key=document.createElement("div");
+    key.classList.add("key");
+    key.innerHTML=`<img src="${keyim}">`;
+    key.style.top=Math.random()*90+"%";
+    key.style.animationDuration=(5+Math.random()*8)+"s";
+    key.style.animationDelay=(Math.random()*8)+"s";
+    key.style.width=(25+Math.random()*35)+"px";
+    document.body.appendChild(key);
+}
