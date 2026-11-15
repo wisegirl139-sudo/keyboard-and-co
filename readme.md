@@ -9,23 +9,23 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 <h3 align="center">BOM</h3>
 
 
-| Item | Qty | Unit price | Total price |
-|:---|---:|---:|---:|
-| LiPo battery, 3.7V 500mAh, JST-PH | 1 | $7.95 | $7.95 |
+| Item | Qty | Unit price | Total price | Link |
+|:---|---:|---:|---:|---|
+| LiPo battery, 3.7V 500mAh, JST-PH | 1 | $7.95 | $7.95 |https://thepihut.com/products/500mah-3-7v-lipo-battery|
 | Capacitor 10uF, 0201 | 1 | $0.10 | $0.10 |
 | Capacitor 100nF, 0201 | 1 | $0.05 | $0.05 |
-| LED 0201, XL-0201UWC | 116 | $0.046 | $5.34 |
-| USB-C receptacle, Amphenol 12401548E4-2A | 1 | $1.80 | $1.80 |
+| LED 0201, XL-0201UWC | 116 | $0.046 | $5.34 |https://www.lcsc.com/product-detail/LED-Indication-Discrete_XINGLIGHT-XL-0201UWC_C965789.html|
+| USB-C receptacle, Amphenol 12401548E4-2A | 1 | $1.80 | $1.80 | https://www.digikey.com.mx/en/products/detail/amphenol-commercial-products/12401548E4-2A/5318162|
 | Pogo pin connector, 8-pin | 10 | $0.50 | $5.00 |
 | Pogo pin connector, 2-pin | 2 | $0.40 | $0.80 |
-| AO3401A P-MOSFET, SOT-23 | 1 | $0.10 | $0.10 |
+| AO3401A P-MOSFET, SOT-23 | 1 | $0.10 | $0.10 | https://www.lcsc.com/product-detail/C347476.html |
 | Resistor 5.1k, 0201 | 2 | $0.02 | $0.04 |
 | Resistor 100k, 0201 | 3 | $0.02 | $0.06 |
-| Resistor 4.7k, 0201 (includes R1) | 7 | $0.02 | $0.14 |
+| Resistor 4.7k, 0201 | 7 | $0.02 | $0.14 | https://www.lcsc.com/product-detail/C965362.html|
 | Resistor 330, 0201 | 1 | $0.02 | $0.02 |
-| Cherry MX switch | 116 | $0.80 | $92.80 |
-| ESP32-S3-WROOM-1 | 1 | $5.00 | $5.00 |
-| MCP73831T-2ACI/OT charger | 1 | $0.76 | $0.76 |
+| Cherry MX switch | 116 | $0.80 | $92.80 | https://1upkeyboards.com/shop/switches/cherry-mx-clear-switch-bundle-120-pack |
+| ESP32-S3-WROOM-1 | 1 | $5.00 | $5.00 |https://www.lcsc.com/product-image/C2913199.html|
+| MCP73831T-2ACI/OT charger | 1 | $0.76 | $0.76 | https://www.lcsc.com/product-detail/C424093.html |
 | AP2112K-3.3TRG1 regulator | 1 | $0.23 | $0.23 |
 | MCP23017-E/SP I/O expander | 4 | $1.50 | $6.00 |
 | 1N4148WS diode, SOD-323 | 116 | $0.03 | $3.48 |
