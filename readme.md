@@ -26,9 +26,9 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 | Cherry MX switch | 116 | $0.80 | $92.80 | https://1upkeyboards.com/shop/switches/cherry-mx-clear-switch-bundle-120-pack |
 | ESP32-S3-WROOM-1 | 1 | $5.00 | $5.00 |https://www.lcsc.com/product-image/C2913199.html|
 | MCP73831T-2ACI/OT charger | 1 | $0.76 | $0.76 | https://www.lcsc.com/product-detail/C424093.html |
-| AP2112K-3.3TRG1 regulator | 1 | $0.23 | $0.23 |
-| MCP23017-E/SP I/O expander | 4 | $1.50 | $6.00 |
-| 1N4148WS diode, SOD-323 | 116 | $0.03 | $3.48 |
+| AP2112K-3.3TRG1 regulator | 1 | $0.23 | $0.23 | https://www.digikey.co.uk/en/products/detail/diodes-incorporated/AP2112K-3-3TRG1/4505257 |
+| MCP23017-E/SP I/O expander | 4 | $1.50 | $6.00 | https://www.digikey.co.uk/en/products/detail/microchip-technology/MCP23017-E-SP/894272 |
+| 1N4148WS diode, SOD-323 | 116 | $0.03 | $3.48 | https://www.lcsc.com/product-detail/C917117.html|
 | **TOTAL** | **385** | | **$129.67** |
 
 
