@@ -16,8 +16,8 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 | Capacitor 100nF, 0201 | 1 | $0.05 | $0.05 | https://www.lcsc.com/product-detail/C307384.html |
 | LED 0201, XL-0201UWC | 116 | $0.046 | $5.34 |https://www.lcsc.com/product-detail/LED-Indication-Discrete_XINGLIGHT-XL-0201UWC_C965789.html|
 | USB-C receptacle, Amphenol 12401548E4-2A | 1 | $1.80 | $1.80 | https://www.digikey.com.mx/en/products/detail/amphenol-commercial-products/12401548E4-2A/5318162|
-| Pogo pin connector, 8-pin | 10 | $0.50 | $5.00 |
-| Pogo pin connector, 2-pin | 2 | $0.40 | $0.80 |
+| Pogo pin connector, 8-pin | 10 | $0.50 | $5.00 | https://shorturl.at/ee6e3 |
+| Pogo pin connector, 2-pin | 2 | $0.40 | $0.80 |https://shorturl.at/ee6e3|
 | AO3401A P-MOSFET, SOT-23 | 1 | $0.10 | $0.10 | https://www.lcsc.com/product-detail/C347476.html |
 | Resistor 5.1k, 0201 | 2 | $0.02 | $0.04 | https://www.lcsc.com/product-detail/C274341.html |
 | Resistor 100k, 0201 | 3 | $0.02 | $0.06 | https://uk.rs-online.com/web/p/surface-mount-resistors/1987555 |
