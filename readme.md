@@ -33,7 +33,7 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 
 
 
-
+*does not include pcb and 3d print costs as those are variable 
 
 okay well that was that , now for my expertise which is web dev , i present to u the most me website i have ever made. it has media pipe for gesture control , yes its gesture controlled yeas u can flip off the laptop , it scrolls the page, maybe give it a thumbs up to select or pinc to zoomin
 also featuring my veryyy creapy art lowk
