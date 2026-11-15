@@ -12,7 +12,7 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 | Item | Qty | Unit price | Total price | Link |
 |:---|---:|---:|---:|---|
 | LiPo battery, 3.7V 500mAh, JST-PH | 1 | $7.95 | $7.95 |https://thepihut.com/products/500mah-3-7v-lipo-battery|
-| Capacitor 10uF, 0201 | 1 | $0.10 | $0.10 |
+| Capacitor 10uF, 0201 | 1 | $0.10 | $0.10 | https://www.tme.eu/en/details/grm035r60g106me01d/mlcc-smd-capacitors/murata |
 | Capacitor 100nF, 0201 | 1 | $0.05 | $0.05 | https://www.lcsc.com/product-detail/C307384.html |
 | LED 0201, XL-0201UWC | 116 | $0.046 | $5.34 |https://www.lcsc.com/product-detail/LED-Indication-Discrete_XINGLIGHT-XL-0201UWC_C965789.html|
 | USB-C receptacle, Amphenol 12401548E4-2A | 1 | $1.80 | $1.80 | https://www.digikey.com.mx/en/products/detail/amphenol-commercial-products/12401548E4-2A/5318162|
