@@ -8,6 +8,7 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 
 <h3 align="center">BOM</h3>
 |Item |	Qty|	Unit price|Total price	|Total|
+|---|---|---|---|---|
 |LiPo battery, 3.7V 500mAh, JST-PH|	1	|$7.95|	$7.95|
 |Capacitor 10uF, 0201	|1|	$0.10|	$0.10|
 |Capacitor 100nF, 0201	|1	|$0.05|	$0.05|
