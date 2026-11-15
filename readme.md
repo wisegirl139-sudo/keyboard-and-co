@@ -6,6 +6,27 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 <img width="3300" height="2550" alt="image" src="https://github.com/user-attachments/assets/65c72d0e-80f2-422c-8023-b3daa77423e7" />
 <img width="3300" height="2550" alt="image" src="https://github.com/user-attachments/assets/a8c7a073-8a51-4fa9-be33-f2f0881c3865" />
 
+<h3 align="center">BOM</h3>
+Item	Qty	Unit price	Total
+LiPo battery, 3.7V 500mAh, JST-PH	1	$7.95	$7.95
+Capacitor 10uF, 0201	1	$0.10	$0.10
+Capacitor 100nF, 0201	1	$0.05	$0.05
+LED 0201, XL-0201UWC	116	$0.046	$5.34
+USB-C receptacle, Amphenol 12401548E4-2A	1	$1.80	$1.80
+Pogo pin connector, 8-pin	10	$0.50	$5.00
+Pogo pin connector, 2-pin	2	$0.40	$0.80
+AO3401A P-MOSFET, SOT-23	1	$0.10	$0.10
+Resistor 5.1k, 0201	2	$0.02	$0.04
+Resistor 100k, 0201	3	$0.02	$0.06
+Resistor 4.7k, 0201 (includes R1)	7	$0.02	$0.14
+Resistor 330, 0201	1	$0.02	$0.02
+Cherry MX switch	116	$0.80	$92.80
+ESP32-S3-WROOM-1	1	$5.00	$5.00
+MCP73831T-2ACI/OT charger	1	$0.76	$0.76
+AP2112K-3.3TRG1 regulator	1	$0.23	$0.23
+MCP23017-E/SP I/O expander	4	$1.50	$6.00
+1N4148WS diode, SOD-323	116	$0.03	$3.48
+TOTAL	385		$129.67
 okay well that was that , now for my expertise which is web dev , i present to u the most me website i have ever made. it has media pipe for gesture control , yes its gesture controlled yeas u can flip off the laptop , it scrolls the page, maybe give it a thumbs up to select or pinc to zoomin
 also featuring my veryyy creapy art lowk
 its meant to be a keycap with hena bc happy diwali everyone!!
