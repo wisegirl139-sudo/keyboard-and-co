@@ -32,3 +32,36 @@ This step also included an awful lot of **decoupling capacitors**. Thank you so 
 <img width="435" height="323" alt="image" src="https://github.com/user-attachments/assets/1249df50-e236-4b87-9796-8be53dac3dde" />
 
 *All components placed and organised.*
+
+---
+
+## Part 2: 63 Keys (1 hr 14 mins)
+
+<img width="487" height="234" alt="image" src="https://github.com/user-attachments/assets/c9b8d751-24ac-43dd-a8f7-c5fc83e7347e" />
+
+### Finishing the power section
+
+I finished up the whole charging part, connected everything to the WROOM, and organised it, of course.
+
+### The blunder
+
+This is where I made a blunder. I used the cool LED and the fancy switches I'd found earlier, except I could not, for the life of me, adapt the way I usually wire switches to these kinds of switches. So I lowkey just gave up and started with the normal switch schematic and LED alongside it.
+
+Can I just say, it was such a **PAIN**. OMDs, 63 is too many.
+
+### The matrix
+
+There's no way that many columns fit on the GPIO for just one component, so we used an **I2C expander** for all the columns. There were only about 5 rows, though, so those connected directly to the WROOM.
+
+Final piece: **sheet 1, organised.**
+
+<img width="475" height="240" alt="image" src="https://github.com/user-attachments/assets/d627c348-6534-4fd9-9a69-a8789203bd0c" />
+
+---
+
+## Part 3: Failure (17 mins)
+
+I started on the F keys, I believe. I was exhausted and had no space, so I tried using the new sheet thing. But move one component and the void eats it, and when you're exhausted, that just kills you, man.
+
+I got as far as placing a lot of what I needed and doing a bit of routing, then un-routing it because it was all wrong.
+
