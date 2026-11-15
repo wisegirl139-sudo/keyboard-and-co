@@ -7,6 +7,8 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 <img width="3300" height="2550" alt="image" src="https://github.com/user-attachments/assets/a8c7a073-8a51-4fa9-be33-f2f0881c3865" />
 
 <h3 align="center">BOM</h3>
+
+
 | Item | Qty | Unit price | Total price |
 |:---|---:|---:|---:|
 | LiPo battery, 3.7V 500mAh, JST-PH | 1 | $7.95 | $7.95 |
@@ -28,6 +30,11 @@ the modular keyboard uses a esp32 s3 vroom , and pogo pins i think theyre called
 | MCP23017-E/SP I/O expander | 4 | $1.50 | $6.00 |
 | 1N4148WS diode, SOD-323 | 116 | $0.03 | $3.48 |
 | **TOTAL** | **385** | | **$129.67** |
+
+
+
+
+
 okay well that was that , now for my expertise which is web dev , i present to u the most me website i have ever made. it has media pipe for gesture control , yes its gesture controlled yeas u can flip off the laptop , it scrolls the page, maybe give it a thumbs up to select or pinc to zoomin
 also featuring my veryyy creapy art lowk
 its meant to be a keycap with hena bc happy diwali everyone!!
